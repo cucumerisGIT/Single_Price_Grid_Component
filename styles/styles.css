@@ -92,6 +92,10 @@ body {
   background: hsl(71, 73%, 54%);
   transition: 0.2s;
 }
+.section__sign-up-btn:active {
+  transform: scale(0.9);
+  filter: brightness(110%);
+}
 .section__list {
   list-style: none;
 }
@@ -145,6 +149,10 @@ body {
   .section__sign-up-btn:hover {
     cursor: pointer;
     transform: scale(1.1);
+    filter: brightness(110%);
+  }
+  .section__sign-up-btn:active {
+    transform: scale(0.9);
     filter: brightness(110%);
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -172,6 +172,11 @@ body {
         background: $clr-vibrant-lime;
 
         transition: .2s; // Transition for Hover 
+
+        &:active {
+            transform: scale(.9);
+            filter: brightness(110%);
+        }
     }
 
     &__list {
@@ -248,6 +253,11 @@ body {
         cursor: pointer;
         
         transform: scale(1.1);
+        filter: brightness(110%);
+    }
+
+    .section__sign-up-btn:active {
+        transform: scale(.9);
         filter: brightness(110%);
     }
 }
