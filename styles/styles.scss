@@ -1,0 +1,257 @@
+/* Imports */
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+/* Variables */
+
+// Colors
+
+$clr-cyan:          hsl(179, 62%, 43%);
+$clr-light-cyan:    hsl(179, 47%, 52%);
+$clr-vibrant-lime:  hsl(71, 73%, 54%);
+$clr-light-gray:    hsl(204, 43%, 93%);
+$clr-grayish-blue:  hsl(218, 22%, 67%);
+
+// Spacing
+
+$section-padding-mobile: 1.5rem;
+$section-padding-desktop: 2rem;
+
+// Border
+
+$border-radius: 5px;
+
+// Shadow
+
+$shadow: 0px 10px 15px 5px rgba(0,0,0, 0.1);
+
+// Typography
+
+$text-font-size: .9rem;
+$text-line-height: 1.5rem;
+
+/* Mixins */
+
+@mixin flex($dir: column, $justify: center, $align: center, $gap: 0) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin grid($cols: auto-fit, $rows: auto-fit, $areas: none, $gap: 0) {
+    display: grid;
+    grid-template-columns: $cols;
+    grid-template-rows: $rows;
+    grid-template-areas: $areas;
+    gap: $gap;
+}
+
+@mixin grid-item($col, $row, $area: none) {
+    grid-column: $col;
+    grid-row: $row;
+    grid-area: $area;
+}
+
+/* Blocks */
+
+// Base
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: "Karla", sans-serif;
+}
+
+html {
+    height: 100dvh;
+    
+    font-size: 16px;
+}
+
+body {
+    @include flex($justify: flex-start);
+
+    min-height: 100%;
+
+    padding: $section-padding-mobile;
+
+    background: $clr-light-gray;
+}
+
+// Hero
+
+.hero {
+    @include grid(
+        $cols: 100%,
+        $areas:
+            "community"
+            "subscription"
+            "why-us"
+    );
+
+    overflow: hidden;
+
+    max-width: 400px;
+    
+    margin: auto;
+
+    border-radius: $border-radius;
+
+    box-shadow: $shadow;
+
+    background: white;
+}
+
+// Section
+
+.section {
+    @include flex($justify: space-between, $align: flex-start, $gap: $section-padding-mobile);
+
+    padding: $section-padding-mobile;
+
+    transition: .5s;
+    
+    /* Elements */
+
+    &__main-title {
+        font-size: 1.5rem;
+
+        color: $clr-cyan;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+
+        /* Modifiers */
+
+        &--clr-green {
+            color: $clr-vibrant-lime;
+        }
+    }
+
+    &__sub-title {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    &__text {
+       font-size: $text-font-size;
+       line-height: $text-line-height;
+       
+       color: $clr-grayish-blue;
+    }
+    
+    &__subscription-text {
+        margin-bottom: .5rem;
+        
+        color: rgba(white, 0.5);
+    }
+
+    &__subscription-price {
+        font-size: 2rem;
+        font-weight: 700;
+        
+        color: white;
+    }
+
+    &__sign-up-btn {
+        width: 100%;
+
+        padding: 1rem;
+
+        font-size: 1rem;
+        font-weight: 700;
+
+        border: none;
+        border-radius: $border-radius;
+
+        box-shadow: $shadow;
+        
+        color: white;
+        background: $clr-vibrant-lime;
+
+        transition: .2s; // Transition for Hover 
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__list-item {
+        font-size: $text-font-size;
+        line-height: $text-line-height;
+
+        color: rgba($clr-light-gray, 0.8);
+    }
+
+    &:nth-of-type(1) {
+        grid-area: community;
+    }
+    
+    &:nth-of-type(2) {
+        grid-area: subscription;
+        
+        background: $clr-cyan;
+    }
+
+    &:nth-of-type(3) {
+        grid-area: why-us;
+
+        position: relative;
+
+        background: $clr-light-cyan;
+    }
+
+    /* Modifiers */
+
+    &--clr-white {
+        color: white;
+    }
+}
+
+// Attribution
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* Queries */
+
+@media (min-width: 565px) {
+    .hero {
+        @include grid(
+            $cols: 50% 50%,
+            $areas:
+                "community      community"
+                "subscription   why-us"
+        );
+
+        max-width: 650px;
+        width: 100%;
+    }
+
+    .section {
+        padding: $section-padding-desktop;
+
+        max-width: 575px;
+    }
+}
+
+@media (hover: hover) {
+    .section__sign-up-btn:hover {
+        transform: scale(1.1);
+        filter: brightness(110%);
+    }
+}
