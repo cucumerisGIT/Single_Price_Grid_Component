@@ -50,12 +50,6 @@ $text-line-height: 1.5rem;
     gap: $gap;
 }
 
-@mixin grid-item($col, $row, $area: none) {
-    grid-column: $col;
-    grid-row: $row;
-    grid-area: $area;
-}
-
 /* Blocks */
 
 // Base
@@ -251,6 +245,8 @@ body {
 
 @media (hover: hover) {
     .section__sign-up-btn:hover {
+        cursor: pointer;
+        
         transform: scale(1.1);
         filter: brightness(110%);
     }

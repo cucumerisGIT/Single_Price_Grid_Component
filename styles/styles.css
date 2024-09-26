@@ -143,6 +143,7 @@ body {
 }
 @media (hover: hover) {
   .section__sign-up-btn:hover {
+    cursor: pointer;
     transform: scale(1.1);
     filter: brightness(110%);
   }
